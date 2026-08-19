@@ -53,6 +53,20 @@ download, and stubs `src/content/artifacts/my-slug.md`. Edit the stub's title
 and date, and add a transcription in the body — it's what readers with screen
 readers (and search engines) get.
 
+## The chronology
+
+`/chronology` merges two registers on one spine: world events and the
+documents themselves. Events live in `src/data/events.ts` — each one must cite
+the artifacts that attest it (`attests: ['artifact-file-name']`); where the
+record is silent, the chronology stays silent. Add a document first, then the
+event.
+
+Flags are inline SVGs in `src/lib/flags.ts`, real and invented polities in one
+namespace, all drawn from one shared palette (that's what makes invented
+things look like they come from one place). Add a flag there and use it in an
+event's `flags: [...]`, or render one anywhere with
+`<Flag code="union-sociale" />`.
+
 ## Deploying
 
 Pushes to `main` deploy to GitHub Pages via `.github/workflows/deploy.yml`

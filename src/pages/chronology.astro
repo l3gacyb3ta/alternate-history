@@ -1,0 +1,98 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Flag from '../components/Flag.astro';
+import { events } from '../data/events';
+import { FLAGS } from '../lib/flags';
+import { catalogNumber, withBase } from '../lib/format';
+
+const base = import.meta.env.BASE_URL;
+const artifacts = (await getCollection('artifacts')).sort((a, b) =>
+  a.data.date.localeCompare(b.data.date)
+);
+const numOf = new Map(artifacts.map((a, i) => [a.id, i + 1]));
+
+type Item =
+  | { sort: string; label: string; type: 'event'; event: (typeof events)[number] }
+  | { sort: string; label: string; type: 'artifact'; artifact: (typeof artifacts)[number] };
+
+const items: Item[] = [
+  ...events.map((event) => ({
+    sort: event.date,
+    label: event.era ?? event.date.slice(0, 4),
+    type: 'event' as const,
+    event,
+  })),
+  ...artifacts.map((artifact) => ({
+    sort: artifact.data.date,
+    label: artifact.data.date.slice(0, 4),
+    type: 'artifact' as const,
+    artifact,
+  })),
+].sort(
+  (a, b) =>
+    a.sort.localeCompare(b.sort) ||
+    (a.type === 'event' ? -1 : 0) - (b.type === 'event' ? -1 : 0)
+);
+
+// Consecutive items sharing a label share a heading.
+const groups: { label: string; items: Item[] }[] = [];
+for (const item of items) {
+  const last = groups[groups.length - 1];
+  if (last && last.label === item.label) last.items.push(item);
+  else groups.push({ label: item.label, items: [item] });
+}
+
+const artifactHref = (id: string) => withBase(base, `/artifacts/${id}/`);
+---
+
+<Base title="Chronology">
+  <h1>Chronology</h1>
+  <p class="foreword">
+    What happened, according to the documents. Every entry cites the catalog
+    numbers that attest it; where the record is silent, so is this page.
+  </p>
+
+  {
+    groups.map((group) => (
+      <section>
+        <h2>{group.label}</h2>
+        <ul class="spine">
+          {group.items.map((item) =>
+            item.type === 'event' ? (
+              <li class="world-event">
+                {item.event.flags?.map((code) => <Flag code={code} />)}
+                {item.event.flags?.length ? ' ' : ''}
+                <strong>{item.event.title}</strong>
+                {item.event.blurb && ` — ${item.event.blurb}`}
+                <span class="citations">({item.event.attests.map((id, i) => <>{i > 0 ? ', ' : ''}<a href={artifactHref(id)}>{catalogNumber(numOf.get(id) ?? 0)}</a></>)})</span>
+              </li>
+            ) : (
+              <li class="record-entry">
+                no. {catalogNumber(numOf.get(item.artifact.id) ?? 0)} · {item.artifact.data.kind}
+                {' — '}
+                <a href={artifactHref(item.artifact.id)}>{item.artifact.data.title}</a>
+              </li>
+            )
+          )}
+        </ul>
+      </section>
+    ))
+  }
+
+  <h2>Flags of the record</h2>
+  <ul class="polity-roll">
+    {
+      Object.entries(FLAGS).map(([code, flag]) => (
+        <li>
+          <Flag code={code} />
+          <span>{flag.name}</span>
+        </li>
+      ))
+    }
+  </ul>
+  <p class="foreword">
+    Renderings simplified from the descriptions and artwork in
+    <a href={artifactHref('our-world-today')}>no. {catalogNumber(numOf.get('our-world-today') ?? 0)}</a>.
+  </p>
+</Base>

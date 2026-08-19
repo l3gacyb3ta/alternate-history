@@ -238,6 +238,66 @@ aside.archivist-note h2 {
 }
 aside.archivist-note p { max-width: var(--measure-prose); }
 
+/* ------------------------------------------------------------------ */
+/* The chronology — one spine, two registers: what happened in the     */
+/* world (prose) and what entered the record (mono, muted).            */
+
+ul.spine {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--pad);
+}
+ul.spine li {
+  padding: 6px 0 6px 1em;
+  border-left: var(--rule) solid var(--rule-color);
+  max-width: var(--measure-prose);
+}
+li.world-event strong { font-weight: 600; }
+li.record-entry {
+  font-family: var(--font-mono);
+  font-size: var(--size-small);
+  color: var(--ink-muted);
+}
+li.record-entry a { color: var(--ink); }
+.citations {
+  font-family: var(--font-mono);
+  font-size: var(--size-small);
+  color: var(--ink-muted);
+  margin-left: 0.4em;
+  white-space: nowrap;
+}
+
+.flag { display: inline-block; }
+.flag svg {
+  width: 21px;
+  height: 15px;
+  display: inline-block;
+  vertical-align: -2px;
+  border: var(--rule) solid var(--rule-color);
+}
+.flag + .flag { margin-left: 3px; }
+
+ul.polity-roll {
+  list-style: none;
+  padding: 0;
+  margin: var(--pad) 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  grid-gap: 8px 1rem;
+}
+ul.polity-roll li {
+  padding-left: 1em;
+  border-left: var(--rule) solid var(--rule-color);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+ul.polity-roll .flag svg {
+  width: 44px;
+  height: 33px;
+  vertical-align: middle;
+}
+
 nav.chronology {
   font-family: var(--font-mono);
   font-size: var(--size-small);

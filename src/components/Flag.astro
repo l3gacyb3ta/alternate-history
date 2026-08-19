@@ -1,0 +1,11 @@
+---
+import { FLAGS } from '../lib/flags';
+
+interface Props {
+  code: string;
+}
+const { code } = Astro.props;
+const flag = FLAGS[code];
+---
+
+{flag && <span class="flag" role="img" aria-label={`Flag of ${flag.name}`} set:html={flag.svg} />}

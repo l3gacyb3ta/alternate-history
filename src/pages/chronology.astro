@@ -49,8 +49,8 @@ const artifactHref = (id: string) => withBase(base, `/artifacts/${id}/`);
 <Base title="Chronology">
   <h1>Chronology</h1>
   <p class="foreword">
-    What happened, according to the documents. Every entry cites the catalog
-    numbers that attest it; where the record is silent, so is this page.
+    A more classic "timeline" style view. However, I try and ground every timeline entry in a document, so it's like
+    you actually built the timeline from what you can see from the documents!
   </p>
 
   {
@@ -80,7 +80,7 @@ const artifactHref = (id: string) => withBase(base, `/artifacts/${id}/`);
     ))
   }
 
-  <h2>Flags of the record</h2>
+  <h2>Flags of this timeline!</h2>
   <ul class="polity-roll">
     {
       Object.entries(FLAGS).map(([code, flag]) => (
@@ -92,7 +92,7 @@ const artifactHref = (id: string) => withBase(base, `/artifacts/${id}/`);
     }
   </ul>
   <p class="foreword">
-    Renderings simplified from the descriptions and artwork in
+    Simplified "emoji" flags, if you want to see better quality versions, check out artifact
     <a href={artifactHref('our-world-today')}>no. {catalogNumber(numOf.get('our-world-today') ?? 0)}</a>.
   </p>
 </Base>

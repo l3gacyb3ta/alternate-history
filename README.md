@@ -54,6 +54,12 @@ download, and stubs `src/content/artifacts/my-slug.md`. Edit the stub's title
 and date, and add a transcription in the body — it's what readers with screen
 readers (and search engines) get.
 
+On wide screens the PDF itself is embedded in the browser's native viewer
+(zoomable, searchable). The page images are only the fallback for phones,
+where inline PDF embedding is unreliable — if you don't care about that,
+delete the `pages:` list from the stub and skip the images entirely; the
+viewer and download link are driven by `pdf:` alone.
+
 ## The chronology
 
 `/chronology` merges two registers on one spine: world events and the

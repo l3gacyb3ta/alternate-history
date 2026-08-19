@@ -209,6 +209,21 @@ table.provenance th {
 
 .letter p { max-width: var(--measure-prose); }
 
+/* The PDF itself, in the browser's native viewer. Page images serve as the
+   fallback where inline PDF is unreliable (phones) or when CSS is off. */
+.facsimile .facsimile-viewer {
+  display: block;
+  width: 100%;
+  height: 85vh;
+  border: var(--rule) solid var(--rule-color);
+}
+@media (max-width: 699px) {
+  .facsimile .facsimile-viewer.has-fallback { display: none; }
+}
+@media (min-width: 700px) {
+  .facsimile .facsimile-pages.is-fallback { display: none; }
+}
+
 .facsimile ol.facsimile-pages {
   list-style: none;
   padding: 0;

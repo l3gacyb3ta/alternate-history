@@ -1,5 +1,5 @@
 {
-  description = "althistdocs — dev shell for the alternate-history archive site";
+  description = "althistdocs";
 
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 

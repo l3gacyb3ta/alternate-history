@@ -63,10 +63,15 @@ viewer and download link are driven by `pdf:` alone.
 ## The chronology
 
 `/chronology` merges two registers on one spine: world events and the
-documents themselves. Events live in `src/data/events.ts` — each one must cite
-the artifacts that attest it (`attests: ['artifact-file-name']`); where the
-record is silent, the chronology stays silent. Add a document first, then the
-event.
+documents themselves. Events live in `src/data/events.yaml` — same syntax as
+artifact frontmatter, comments welcome; the header of that file documents the
+fields. Each event must cite the artifacts that attest it
+(`attests: [artifact-file-name]`); where the record is silent, the chronology
+stays silent. Add a document first, then the event.
+
+The build **fails on purpose** if an event uses a flag code that isn't in
+`src/lib/flags.ts` or cites an artifact that doesn't exist — a typo can't
+silently render as a missing glyph or `no. 000`.
 
 Flags are inline SVGs in `src/lib/flags.ts`, real and invented polities in one
 namespace, all drawn from one shared palette (that's what makes invented

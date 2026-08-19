@@ -99,7 +99,7 @@ export const FLAGS: Record<string, FlagDef> = {
     ),
   },
 
-  'deutscher-freistaat': {
+  'de-freistaat': {
     name: 'Deutscher Freistaat',
     svg: box(
       `<rect width="640" height="480" fill="${INK}"/>` +

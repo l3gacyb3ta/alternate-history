@@ -35,7 +35,7 @@ const built = new Date().toISOString().slice(0, 10);
       <slot />
     </main>
     <footer class="edition">
-      built {built}{sha && ` · ${sha}`} · Arcade Wise
+      built {built}{sha && ` - ${sha}`}
     </footer>
   </body>
 </html>

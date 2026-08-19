@@ -75,7 +75,7 @@ h2 { margin-top: var(--pad); text-transform: uppercase; font-size: var(--size-ba
 h3 { text-transform: capitalize; font-size: var(--size-base); }
 
 a { text-decoration: underline; color: inherit; }
-a:hover { background: var(--hover-bg); color: var(--hover-fg); }
+a:hover { background: var(--hover-bg); color: var(--hover-fg) !important; }
 
 nav.site {
   font-family: var(--font-mono);

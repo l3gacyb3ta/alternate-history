@@ -36,6 +36,7 @@ Everything below is optional:
 | `source` | clipping: the publication; transcript: the station |
 | `ref` | an in-world reference number, if the document carries one |
 | `series` | groups multi-part correspondence |
+| `flags` | polities appearing in the document, e.g. `[union-sociale, fr]` — codes from `src/lib/flags.ts`; shown in the catalog and provenance |
 | `note` | your out-of-world archivist's note, shown apart from the document |
 | `sample` | marks placeholder content in the catalog |
 

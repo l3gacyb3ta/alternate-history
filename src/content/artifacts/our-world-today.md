@@ -4,6 +4,7 @@ date: "2010-09-14"
 dateDisplay: "September 2010"
 kind: facsimile
 author: "Heartland Educational Publishing"
+flags: [union-sociale, bund, fr, de, deutscher-freistaat, volksstadt-berlin, gb, it, es, pt]
 pages:
   - artifacts/our-world-today/page-1.jpg
   - artifacts/our-world-today/page-2.jpg

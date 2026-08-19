@@ -4,6 +4,7 @@ date: "2002-06-04"
 kind: clipping
 source: "The Morning Ledger, London"
 author: "From our correspondent in Frankfurt"
+flags: [bund, union-sociale, gb]
 sample: true
 note: "A sample artifact written by Claude to show the newspaper-clipping layout. Replace it with your own work, or keep it. Canon from the handout: the Europäischer Bund founded at Frankfurt in 2002; the UK a member of neither union; the two unions competing 'even in space.'"
 ---

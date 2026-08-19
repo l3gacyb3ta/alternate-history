@@ -8,6 +8,8 @@ import Transcript from '../../components/kinds/Transcript.astro';
 import Letter from '../../components/kinds/Letter.astro';
 import Facsimile from '../../components/kinds/Facsimile.astro';
 import PlainDocument from '../../components/kinds/PlainDocument.astro';
+import Flag from '../../components/Flag.astro';
+import { FLAGS } from '../../lib/flags';
 import { catalogNumber, displayDate, withBase } from '../../lib/format';
 
 export async function getStaticPaths() {
@@ -62,6 +64,16 @@ if (data.series) provenance.push(['series', data.series]);
           {provenance.map(([field, value]) => (
             <tr><th scope="row">{field}</th><td>{value}</td></tr>
           ))}
+          {data.flags.length > 0 && (
+            <tr>
+              <th scope="row">polities</th>
+              <td class="polities">
+                {data.flags.map((code, i) => (
+                  <>{i > 0 ? ', ' : ''}<Flag code={code} /> {FLAGS[code]?.name ?? code}</>
+                ))}
+              </td>
+            </tr>
+          )}
         </tbody>
       </table>
     </header>

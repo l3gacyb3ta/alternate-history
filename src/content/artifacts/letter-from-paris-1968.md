@@ -4,6 +4,7 @@ date: "1968-06-02"
 kind: letter
 author: "Béatrice Aulnay, Paris"
 recipient: "Her cousin Madeleine, Montreal"
+flags: [fr]
 sample: true
 note: "A sample artifact written by Claude to show the letter layout. Replace it with your own work, or keep it — it stays inside the canon the handout establishes: the 'events of 1968' that changed the French government."
 ---

@@ -122,6 +122,8 @@ table.catalog .no, table.catalog .worlddate, table.catalog .kind {
   font-size: var(--size-small);
   white-space: nowrap;
 }
+table.catalog td.polities { line-height: 1.1; }
+td.polities .flag { margin-right: 2px; }
 
 p.foreword { color: var(--ink-muted); }
 

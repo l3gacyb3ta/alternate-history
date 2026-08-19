@@ -19,6 +19,8 @@ const artifacts = defineCollection({
     // In-world reference number, if the document carries one. Never invented by the site.
     ref: z.string().optional(),
     series: z.string().optional(),
+    // Polities appearing in the document — codes from src/lib/flags.ts.
+    flags: z.array(z.string()).default([]),
     // Archivist's note — Arcade's out-of-world voice, rendered apart from the document.
     note: z.string().optional(),
     sample: z.boolean().default(false),

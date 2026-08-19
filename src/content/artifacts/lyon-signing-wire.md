@@ -4,6 +4,7 @@ date: "1974-05-18"
 kind: telegram
 author: "Secretariat of the conference, Lyon"
 recipient: "Ministry of Foreign Affairs, Paris"
+flags: [union-sociale, fr]
 sample: true
 note: "A sample artifact written by Claude to show the telegram layout. Replace it with your own work, or keep it. The Treaty of Lyon, 1974, is canon from the handout; everything else here is scaffolding."
 ---

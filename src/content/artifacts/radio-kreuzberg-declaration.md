@@ -3,6 +3,7 @@ title: "Broadcast from the night Berlin declared itself"
 date: "1994-01-15"
 kind: transcript
 source: "Radio Kreuzberg, 93.1 MHz — evening broadcast, partial"
+flags: [volksstadt-berlin, deutscher-freistaat]
 sample: true
 note: "A sample artifact written by Claude to show the transcript layout. Replace it with your own work, or keep it. Canon from the handout: the Volksstadt Berlin declared independence in 1994, during protests and economic trouble."
 ---

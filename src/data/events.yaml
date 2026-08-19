@@ -14,13 +14,13 @@
 - date: "1945"
   era: The 1940s
   title: The two German states go their separate ways
-  blurb: The Federal Republic in the west, the Deutscher Freistaat in the east. The record does not yet say how.
+  blurb: The Federal Republic in the west, the GDR in the east.
   flags: [de, de-gdr]
   attests: [our-world-today]
 
 - date: "1968-05"
   title: May 1968
-  blurb: Huge protests change the French government.
+  blurb: Huge protests rock the world, and bring down the French government.
   flags: [fr]
   attests: [our-world-today]
 
@@ -39,17 +39,17 @@
 - date: "1975"
   title: Franco falls, the republic returns!
   blurb: A country without a king, supported by their social democratic neighbours to the north and west.
-  flags: [es]
+  flags: [es, union-sociale]
   attests: [our-world-today]
 
 - date: "1994-01-15"
   title: Berlin declares itself the Volksstadt
-  blurb: Read aloud twice — once for the hall, once for the square.
+  blurb: Self-determination in the imperial core.
   flags: [volksstadt-berlin]
   attests: [our-world-today]
 
 - date: "2002-06-03"
-  title: The Treaty of Frankfurt — the Europäischer Bund is founded
-  blurb: Eleven minutes of ceremony after nine years of negotiation.
+  title: "The Treaty of Frankfurt: the Europäischer Bund is founded"
+  blurb: Capital finally has a real international organization to call its own.
   flags: [bund]
   attests: [our-world-today]

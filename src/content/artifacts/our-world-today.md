@@ -13,7 +13,7 @@ pages:
   - artifacts/our-world-today/page-5.jpg
   - artifacts/our-world-today/page-6.jpg
 pdf: artifacts/our-world-today/our-world-today.pdf
-note: "A teacher's photocopy of a middle-school social studies unit, recovered with its pencil annotations intact. The note on the back page rewards a close look. Made by Arcade Wise in Affinity, August 2026."
+note: "A teacher's key for a middle-school social studies handout. The note on the back page is probably my favorite little thing I added."
 ---
 
 ## Transcription

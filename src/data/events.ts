@@ -19,20 +19,13 @@ export const events: WorldEvent[] = [
     title: 'The two German states go their separate ways',
     blurb:
       'The Federal Republic in the west, the Deutscher Freistaat in the east. The record does not yet say how.',
-    flags: ['de', 'deutscher-freistaat'],
+    flags: ['de', 'de-gdr'],
     attests: ['our-world-today'],
   },
   {
     date: '1968-05',
-    title: 'The events of 1968',
+    title: 'May 1968',
     blurb: 'Huge protests change the French government.',
-    flags: ['fr'],
-    attests: ['letter-from-paris-1968', 'our-world-today'],
-  },
-  {
-    date: '1969',
-    title: 'The flower reaches the flag',
-    blurb: 'Official French flags begin to carry a small red flower near the flagpole.',
     flags: ['fr'],
     attests: ['our-world-today'],
   },
@@ -45,9 +38,9 @@ export const events: WorldEvent[] = [
   },
   {
     date: '1974-05-18',
-    title: 'The Treaty of Lyon — the Union sociale is founded',
-    blurb: 'Signed at the silk exchange; protection "from the cradle to the grave."',
-    flags: ['union-sociale', 'fr'],
+    title: 'The Treaty of Lyon: the Union sociale is founded!',
+    blurb: 'Social-democratic state protection "from the cradle to the grave."',
+    flags: ['union-sociale', 'fr', 'pt'],
     attests: ['lyon-signing-wire', 'our-world-today'],
   },
   {

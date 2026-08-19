@@ -82,6 +82,23 @@ export const FLAGS: Record<string, FlagDef> = {
     ),
   },
 
+  'de-gdr': {
+    name: 'German Democratic Republic',
+    svg: box(
+      `<rect width="640" height="480" fill="${INK}"/>` +
+        `<rect y="160" width="640" height="160" fill="${RED}"/>` +
+        `<rect y="320" width="640" height="160" fill="${GOLD}"/>` +
+        // state emblem, simplified: rye wreath, compass, hammer
+        `<circle cx="320" cy="240" r="86" stroke="${GOLD}" stroke-width="15" fill="none"/>` +
+        `<circle cx="320" cy="187" r="9" stroke="${GOLD}" stroke-width="9" fill="none"/>` +
+        `<g stroke="${GOLD}" stroke-width="11" fill="none">` +
+        `<path d="M314,194 L278,286 M326,194 L362,286"/>` +
+        `</g>` +
+        `<rect x="313" y="222" width="14" height="74" fill="${GOLD}"/>` +
+        `<path d="M290,212 L350,212 L358,234 L282,234 Z" fill="${GOLD}"/>`
+    ),
+  },
+
   'deutscher-freistaat': {
     name: 'Deutscher Freistaat',
     svg: box(

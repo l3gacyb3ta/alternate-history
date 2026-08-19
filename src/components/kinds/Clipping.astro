@@ -1,0 +1,18 @@
+---
+import { displayDate } from '../../lib/format';
+
+const { data } = Astro.props;
+---
+
+<div class="clipping">
+  {
+    data.source && (
+      <p class="dateline">
+        {data.source} · {displayDate(data.date, data.dateDisplay)}
+      </p>
+    )
+  }
+  <div class="clipping-text">
+    <slot />
+  </div>
+</div>

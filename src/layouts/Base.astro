@@ -1,0 +1,40 @@
+---
+import '../styles/site.css';
+import { execSync } from 'node:child_process';
+import { withBase } from '../lib/format';
+
+interface Props {
+  title?: string;
+}
+const { title } = Astro.props;
+const base = import.meta.env.BASE_URL;
+
+let sha = '';
+try {
+  sha = execSync('git rev-parse --short HEAD', { stdio: ['ignore', 'pipe', 'ignore'] })
+    .toString()
+    .trim();
+} catch {}
+const built = new Date().toISOString().slice(0, 10);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title ? `${title} — Alternate Histories` : 'Alternate Histories'}</title>
+  </head>
+  <body>
+    <nav class="site">
+      <a href={withBase(base, '/')}>catalog</a>
+      <a href={withBase(base, '/about/')}>about</a>
+    </nav>
+    <main>
+      <slot />
+    </main>
+    <footer class="edition">
+      built {built}{sha && ` · ${sha}`} · Arcade Wise
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,97 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Telegram from '../../components/kinds/Telegram.astro';
+import Memo from '../../components/kinds/Memo.astro';
+import Clipping from '../../components/kinds/Clipping.astro';
+import Transcript from '../../components/kinds/Transcript.astro';
+import Letter from '../../components/kinds/Letter.astro';
+import Facsimile from '../../components/kinds/Facsimile.astro';
+import PlainDocument from '../../components/kinds/PlainDocument.astro';
+import { catalogNumber, displayDate, withBase } from '../../lib/format';
+
+export async function getStaticPaths() {
+  const artifacts = (await getCollection('artifacts')).sort((a, b) =>
+    a.data.date.localeCompare(b.data.date)
+  );
+  return artifacts.map((entry, i) => ({
+    params: { slug: entry.id },
+    props: {
+      entry,
+      num: i + 1,
+      prev: artifacts[i - 1] ?? null,
+      next: artifacts[i + 1] ?? null,
+    },
+  }));
+}
+
+const { entry, num, prev, next } = Astro.props;
+const { Content } = await render(entry);
+const base = import.meta.env.BASE_URL;
+const data = entry.data;
+
+const kinds: Record<string, any> = {
+  telegram: Telegram,
+  memo: Memo,
+  clipping: Clipping,
+  transcript: Transcript,
+  letter: Letter,
+  facsimile: Facsimile,
+  document: PlainDocument,
+};
+const Kind = kinds[data.kind] ?? PlainDocument;
+
+const provenance: [string, string][] = [
+  ['no.', catalogNumber(num)],
+  ['date', displayDate(data.date, data.dateDisplay)],
+  ['kind', data.kind],
+];
+if (data.author) provenance.push(['author', data.author]);
+if (data.recipient) provenance.push(['recipient', data.recipient]);
+if (data.source) provenance.push(['source', data.source]);
+if (data.ref) provenance.push(['ref', data.ref]);
+if (data.series) provenance.push(['series', data.series]);
+---
+
+<Base title={data.title}>
+  <article class="artifact">
+    <header>
+      <h1>{data.title}</h1>
+      <table class="provenance">
+        <tbody>
+          {provenance.map(([field, value]) => (
+            <tr><th scope="row">{field}</th><td>{value}</td></tr>
+          ))}
+        </tbody>
+      </table>
+    </header>
+
+    <div class="document-body">
+      <Kind data={data}>
+        <Content />
+      </Kind>
+    </div>
+
+    {
+      data.note && (
+        <aside class="archivist-note">
+          <h2>Archivist's note</h2>
+          <p>{data.note}</p>
+        </aside>
+      )
+    }
+
+    <nav class="chronology">
+      <span>
+        {prev && (
+          <a href={withBase(base, `/artifacts/${prev.id}/`)}>← {prev.data.title}</a>
+        )}
+      </span>
+      <span>
+        {next && (
+          <a href={withBase(base, `/artifacts/${next.id}/`)}>{next.data.title} →</a>
+        )}
+      </span>
+    </nav>
+  </article>
+</Base>

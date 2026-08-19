@@ -1,0 +1,8 @@
+---
+const { data } = Astro.props;
+---
+
+<div class="transcript">
+  {data.source && <p class="dateline">{data.source}</p>}
+  <slot />
+</div>

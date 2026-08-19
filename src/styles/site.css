@@ -1,0 +1,248 @@
+/* althistdocs — factbook mode over portal's measured tokens.
+   See arcade-house-style/SKILL.md; portal values transcribed from
+   arcade-house-style/modes/portal/tokens.css. */
+
+:root {
+  --paper:        #ffffff;
+  --ink:          #0a0a0a;
+  --ink-muted:    #666666;
+  --rule-color:   #e2e2e2;
+  --fill-inert:   lightgray;
+
+  --hover-bg:     #0a0a0a;
+  --hover-fg:     #fdf6e3;
+
+  --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+               "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  /* diegetic: printed matter (newspaper clippings) only */
+  --font-print: Georgia, "Times New Roman", Times, serif;
+
+  --size-base:    16px;
+  --size-small:   14px;
+
+  --leading:       1.5;
+  --leading-tight: 1.2;
+
+  --measure-main:  800px;
+  --measure-prose: 62ch;
+
+  --pad:          20px;
+  --gap-section:  30px;
+  --pad-cell:     2px 6px;
+
+  --radius:       0;
+  --rule:         1px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper:      #171717;
+    --ink:        #eeeeee;
+    --ink-muted:  #bbbbbb;
+    --rule-color: #333333;
+    --fill-inert: #444444;
+    --hover-bg:   #eeeeee;
+    --hover-fg:   #171717;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--size-base);
+  line-height: var(--leading);
+  color: var(--ink);
+  background: var(--paper);
+}
+
+main {
+  max-width: var(--measure-main);
+  margin: 0 auto var(--gap-section);
+  padding: 0 var(--pad);
+}
+
+main p { max-width: var(--measure-prose); }
+
+h1, h2, h3, h4 {
+  line-height: var(--leading-tight);
+  margin-bottom: 0.1em;
+}
+h1 { font-weight: normal; }
+h2 { margin-top: var(--pad); text-transform: uppercase; font-size: var(--size-base); }
+h3 { text-transform: capitalize; font-size: var(--size-base); }
+
+a { text-decoration: underline; color: inherit; }
+a:hover { background: var(--hover-bg); color: var(--hover-fg); }
+
+nav.site {
+  font-family: var(--font-mono);
+  font-size: var(--size-small);
+  padding: var(--pad);
+  max-width: var(--measure-main);
+  margin: 0 auto;
+}
+nav.site a { margin-right: 1em; }
+
+footer.edition {
+  font-family: var(--font-mono);
+  font-size: var(--size-small);
+  color: var(--ink-muted);
+  padding: var(--pad);
+  max-width: var(--measure-main);
+  margin: 0 auto;
+  border-top: var(--rule) solid var(--rule-color);
+}
+
+/* ------------------------------------------------------------------ */
+/* The catalog — the index table of holdings.                          */
+
+table.catalog {
+  width: 100%;
+  border: var(--rule) solid var(--fill-inert);
+  border-spacing: 0;
+  border-collapse: collapse;
+  text-align: left;
+  margin-top: var(--pad);
+}
+table.catalog th, table.catalog td {
+  padding: var(--pad-cell);
+  border: var(--rule) solid var(--fill-inert);
+  vertical-align: top;
+}
+table.catalog th {
+  font-weight: normal;
+  color: var(--ink-muted);
+  font-size: var(--size-small);
+}
+table.catalog .no, table.catalog .worlddate, table.catalog .kind {
+  font-family: var(--font-mono);
+  font-size: var(--size-small);
+  white-space: nowrap;
+}
+
+p.foreword { color: var(--ink-muted); }
+
+/* ------------------------------------------------------------------ */
+/* Artifact pages.                                                     */
+
+article.artifact header { margin-bottom: var(--gap-section); }
+
+table.provenance {
+  border-spacing: 0;
+  border-collapse: collapse;
+  margin-top: 0.5em;
+  font-size: var(--size-small);
+}
+table.provenance th, table.provenance td {
+  padding: var(--pad-cell);
+  border: var(--rule) solid var(--rule-color);
+  text-align: left;
+  vertical-align: top;
+}
+table.provenance th {
+  font-weight: normal;
+  color: var(--ink-muted);
+  font-family: var(--font-mono);
+  padding-right: 1em;
+}
+
+/* The document itself sits inside one keyline — the frame budget. */
+.document-body {
+  border: var(--rule) solid var(--rule-color);
+  padding: var(--gap-section);
+  margin: var(--gap-section) 0;
+}
+
+/* Kinds. The typography of each kind is the datum: what the document
+   IS is carried by how it is set, not by decoration around it. */
+
+.telegram {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  max-width: 62ch;
+}
+.telegram p { max-width: 62ch; }
+
+.memo table.memo-header {
+  border-spacing: 0;
+  border-collapse: collapse;
+  margin-bottom: var(--pad);
+  width: 100%;
+}
+.memo table.memo-header th, .memo table.memo-header td {
+  padding: var(--pad-cell);
+  border-bottom: var(--rule) solid var(--rule-color);
+  text-align: left;
+  font-size: var(--size-small);
+}
+.memo table.memo-header th {
+  font-weight: normal;
+  color: var(--ink-muted);
+  font-family: var(--font-mono);
+  width: 6em;
+}
+
+.dateline {
+  font-family: var(--font-mono);
+  font-size: var(--size-small);
+  color: var(--ink-muted);
+  margin-top: 0;
+}
+
+.clipping { font-family: var(--font-print); }
+@media (min-width: 700px) {
+  .clipping .clipping-text {
+    columns: 2;
+    column-gap: var(--gap-section);
+    column-rule: var(--rule) solid var(--rule-color);
+  }
+  .clipping .clipping-text p { max-width: none; }
+}
+
+.transcript { font-family: var(--font-mono); }
+.transcript p { max-width: 70ch; }
+
+.letter p { max-width: var(--measure-prose); }
+
+.facsimile ol.facsimile-pages {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.facsimile ol.facsimile-pages img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-bottom: var(--pad);
+}
+.facsimile .download {
+  font-family: var(--font-mono);
+  font-size: var(--size-small);
+}
+
+/* ------------------------------------------------------------------ */
+/* The archivist's voice — extradiegetic, set apart and muted.         */
+
+aside.archivist-note {
+  border-top: var(--rule) solid var(--rule-color);
+  margin-top: var(--gap-section);
+  padding-top: var(--pad);
+  color: var(--ink-muted);
+}
+aside.archivist-note h2 {
+  font-size: var(--size-small);
+  margin-top: 0;
+}
+aside.archivist-note p { max-width: var(--measure-prose); }
+
+nav.chronology {
+  font-family: var(--font-mono);
+  font-size: var(--size-small);
+  margin-top: var(--gap-section);
+  display: flex;
+  justify-content: space-between;
+  gap: var(--pad);
+}

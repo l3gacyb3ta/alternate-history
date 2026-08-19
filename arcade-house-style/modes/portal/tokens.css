@@ -1,0 +1,89 @@
+/* portal — measured from the live arcades.agency stylesheet, 2026-07.
+   Merveilles / XXIIVV lineage. Values are transcribed, not invented.
+   The hover treatment is the signature: an inverted solid block, no transition. */
+
+:root {
+  --paper:        #ffffff;
+  --ink:          #0a0a0a;
+  --ink-muted:    #666666;
+  --rule-color:   #e2e2e2;
+  --fill-inert:   lightgray;   /* code + table borders, as authored */
+
+  /* the one accent: hover inverts to ink, with Solarized base3 as foreground */
+  --hover-bg:     #0a0a0a;
+  --hover-fg:     #fdf6e3;
+
+  --font-body:    sans-serif;  /* bare, deliberately — inherits the reader's choice */
+  --font-nav:     monospace;
+
+  --size-base:    16px;
+  --size-small:   14px;        /* nav, code */
+  --size-caption: 0.9em;       /* figcaption, cite */
+
+  --leading:       1.5em;
+  --leading-tight: 1.2em;
+
+  --measure-page:  960px;
+  --measure-main:  800px;
+  --measure-prose: 620px;
+  --measure-quote: 500px;
+
+  --pad:          20px;
+  --gap-section:  30px;
+  --pad-cell:     2px 6px;
+  --pad-code:     4px;
+  --pad-pre:      8px;
+
+  --radius:       0;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper:      #171717;
+    --ink:        #eeeeee;
+    --ink-muted:  #bbbbbb;
+    --fill-inert: #000000;
+    --hover-bg:   #171717;
+    --hover-fg:   #eeeeee;
+  }
+}
+
+/* Structural rules that are part of the identity, not incidental. */
+
+body { font: var(--size-base)/1 var(--font-body);
+       color: var(--ink); background: var(--paper);
+       width: var(--measure-page); max-width: 100%; margin: 0; }
+
+main { max-width: var(--measure-main); margin: 0 auto var(--gap-section);
+       padding: 0 var(--pad); line-height: var(--leading); }
+
+main p { max-width: var(--measure-prose); }
+
+main h1, main h2, main h3, main h4 {
+  line-height: var(--leading-tight);
+  margin-bottom: 0.1em;          /* yes, 0.1em. this is the tightness. */
+}
+main h1 { font-weight: normal; }  /* never bold */
+main h2 { margin-top: var(--pad); text-transform: uppercase; }
+main h3 { text-transform: capitalize; }
+
+nav { font-family: var(--font-nav); font-size: var(--size-small); padding: var(--pad); }
+
+a { text-decoration: underline; color: inherit; }
+a:hover { background: var(--hover-bg); color: var(--hover-fg); }  /* no transition */
+
+main table { width: 100%; border: var(--rule) solid var(--fill-inert);
+             border-spacing: 0; text-align: left; }
+main table td { padding: var(--pad-cell); border: var(--rule) solid var(--fill-inert);
+                vertical-align: top; }
+
+/* Index grids: separated by a left rule, never by a card. */
+.portal > ul { display: grid; list-style: none;
+               grid-template-columns: repeat(auto-fit, minmax(288px, 1fr));
+               grid-gap: 1rem; }
+.portal > ul > li { padding-left: 1em; border-left: var(--rule) solid var(--rule-color); }
+
+/* On very large displays the measure gets NARROWER, not wider. */
+@media (min-width: 2500px), (min-resolution: 192dpi) {
+  body { width: 640px; }
+}

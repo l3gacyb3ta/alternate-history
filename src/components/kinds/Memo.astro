@@ -1,0 +1,22 @@
+---
+import { displayDate } from '../../lib/format';
+
+const { data } = Astro.props;
+
+const fields: [string, string][] = [];
+if (data.author) fields.push(['From', data.author]);
+if (data.recipient) fields.push(['To', data.recipient]);
+fields.push(['Date', displayDate(data.date, data.dateDisplay)]);
+fields.push(['Re', data.title]);
+---
+
+<div class="memo">
+  <table class="memo-header">
+    <tbody>
+      {fields.map(([field, value]) => (
+        <tr><th scope="row">{field}</th><td>{value}</td></tr>
+      ))}
+    </tbody>
+  </table>
+  <slot />
+</div>

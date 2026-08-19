@@ -86,6 +86,12 @@ Pushes to `main` deploy to GitHub Pages via `.github/workflows/deploy.yml`
 configured in `astro.config.mjs` for `arcadewise.github.io/althistdocs`; if
 the repo name or domain changes, change `site`/`base` there.
 
+## License
+
+Everything in this repository — documents, world, and site — is
+[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/),
+© Arcade Wise. Full legal code in [LICENSE.md](LICENSE.md).
+
 ## Design notes
 
 The design rules live in `arcade-house-style/SKILL.md` — read it before

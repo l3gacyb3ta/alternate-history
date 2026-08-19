@@ -35,7 +35,9 @@ const built = new Date().toISOString().slice(0, 10);
       <slot />
     </main>
     <footer class="edition">
-      built {built}{sha && ` - ${sha}`}
+      built {built}{sha && ` - ${sha}`} - <a
+        href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+        rel="license">CC BY-NC-SA 4.0</a>
     </footer>
   </body>
 </html>
